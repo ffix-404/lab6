@@ -26,7 +26,7 @@ def courses_list(request):
     form =CoursesForms()
     return render(request , 'courses.html',{"courses_list1":Courses.objects.all() , 'forms':form})
 
-def Add_Course(request):
+def Add_Course(request):#add coures to the list of courses
     if request.method == "POST":
         form =CoursesForms(request.POST)
         if form.is_valid:
@@ -45,7 +45,7 @@ def detail(request , Student_id):
     unregistered_courses = all_courses.exclude(id__in=corses)
     return render(request , "detail.html" , {'info' : Student_info , "corses":corses ,"none_courses":unregistered_courses})
 
-def add_courses(request , Student_id):
+def add_courses(request , Student_id):#add coures to student
     print("enter")
     if request.method == "POST":
         student_info = Student.objects.get(pk = Student_id)
